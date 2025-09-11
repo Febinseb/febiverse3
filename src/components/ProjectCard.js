@@ -2,10 +2,14 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
 
 const ProjectCard = ({ type, src, altText, description, href, posterSrc }) => {
   const isVideo = type === 'video';
   const isImage = type === 'image';
+
+  // Correct the source URL for Vimeo to be an embed URL
+  const vimeoEmbedSrc = isVideo ? `https://player.vimeo.com/video/${src.split('/').pop()}` : '';
 
   return (
     <Link href={href}>
@@ -18,11 +22,14 @@ const ProjectCard = ({ type, src, altText, description, href, posterSrc }) => {
 
         {isVideo && (
           <div className="w-full h-48 relative overflow-hidden rounded-md mb-4">
-            {/* Add the poster attribute to the video tag */}
-            <video controls preload="none" poster={posterSrc} className="w-full h-full object-cover rounded-md">
-              <source src={src} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <iframe
+              src={vimeoEmbedSrc}
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              title={altText}
+              className="w-full h-full object-cover rounded-md"
+            ></iframe>
           </div>
         )}
 

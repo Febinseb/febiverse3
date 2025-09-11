@@ -4,7 +4,7 @@ const projects = [
   {
     id: 1,
     type: 'video',
-    src: '/videos/edit-project-1.mp4',
+    src: 'https://player.vimeo.com/video/1117414686', // This is the correct embed URL
     altText: 'Video Editing Project 1',
     description: 'An example of a recent video editing project with vfx.',
     href: '#',
@@ -24,11 +24,10 @@ export default function ProjectsPage() {
   return (
     <main className="min-h-screen bg-black text-white p-8 pt-20">
       <div className="max-w-7xl mx-auto py-12">
-                <h1 className="text-6xl font-extrabold mb-12 text-center">
-        <span className="text-white">My</span>{' '}
-  <span className="text-green-400">Projects</span>
-  </h1>
-
+        <h1 className="text-6xl font-extrabold mb-12 text-center">
+          <span className="text-white">My</span>{' '}
+          <span className="text-green-400">Projects</span>
+        </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
           {projects.map(project => (
             <ProjectCard
