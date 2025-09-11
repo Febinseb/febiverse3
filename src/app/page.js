@@ -29,27 +29,27 @@ export default function HomePage() {
         }`}
       >
         <div className="absolute inset-0 z-[-1]">
-          /* --- replace only the iframe block with this --- */
-<video
-  className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-  autoPlay
-  muted
-  loop
-  playsInline
-  preload="auto"
-  onCanPlayThrough={() => setVideoLoaded(true)}
-  onError={(e) => {
-    console.error('video error', e);
-    setVideoLoaded(true);
-  }}
->
-  <source src="https://github.com/Febinseb/febiverse3/releases/download/v1.0/hero-video.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-
+          {/* ONLY THIS ELEMENT IS CHANGED */}
+          <video
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            onCanPlayThrough={() => setVideoLoaded(true)}
+            onError={(e) => {
+              console.error('video error', e);
+              setVideoLoaded(true);
+            }}
+          >
+            <source src="https://github.com/Febinseb/febiverse3/releases/download/v1.0/hero-video.mp4" type="video/mp4" />
+            <source src="/videos/hero-video.webm" type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
         </div>
 
-        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-[1]"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-[1]" />
 
         <HeroContent />
       </main>
