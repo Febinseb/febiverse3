@@ -4,7 +4,7 @@ const projects = [
   {
     id: 1,
     type: 'video',
-    src: 'https://player.vimeo.com/video/1117414686', // This is the correct embed URL
+    src: 'https://player.vimeo.com/video/1117414686', 
     altText: 'Video Editing Project 1',
     description: 'An example of a recent video editing project with vfx.',
     href: '#',

@@ -4,19 +4,19 @@ import { TypeAnimation } from 'react-type-animation';
 
 const TypingEffect = () => {
   const phrases = [
-    "Editor",
+    "an Editor",
     1000,
-    "Developer",
+    "a Developer",
     1000,
-    "Engineer",
+    "an Engineer",
     1000,
-    "Musician",
+    "a Musician",
     1000
   ];
 
   return (
     <div className="text-2xl font-semibold typing-effect">
-      <span>I&apos;m a</span>
+      <span>I&apos;m</span>
       <TypeAnimation
         sequence={phrases}
         wrapper="span"

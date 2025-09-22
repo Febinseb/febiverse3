@@ -25,11 +25,10 @@ export default function HomePage() {
 
       <main
         className={`relative h-screen w-full overflow-hidden transition-opacity duration-500 ${
-          videoLoaded ? 'opacity-100' : 'opacity-0'
+          videoLoaded ? 'opacity-100' : 'opacity-50'
         }`}
       >
         <div className="absolute inset-0 z-[-1]">
-          {/* ONLY THIS ELEMENT IS CHANGED */}
           <video
             className="absolute inset-0 w-full h-full object-cover pointer-events-none"
             autoPlay
@@ -49,7 +48,7 @@ export default function HomePage() {
           </video>
         </div>
 
-        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-[1]" />
+        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-70 z-[1]" />
 
         <HeroContent />
       </main>
