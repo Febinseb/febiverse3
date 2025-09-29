@@ -18,6 +18,14 @@ const projects = [
     description: 'A church website built with HTML and CSS.',
     href: 'https://velankanniparish-mysore.netlify.app'
   },
+  {
+    id: 3,
+    type: 'image',
+    src: '/images/game-project-1.png',
+    altText: 'Game Development Project 1',
+    description: 'A simple game built using HTML, CSS and Javascript.',
+    href: 'https://catch-the-id.netlify.app'
+  },
 ];
 
 export default function ProjectsPage() {
