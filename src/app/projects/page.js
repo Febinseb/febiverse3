@@ -26,6 +26,15 @@ const projects = [
     description: 'A simple game built using HTML, CSS and Javascript.',
     href: 'https://catch-the-id.netlify.app'
   },
+  {
+    id: 4,
+    type: 'video',
+    src: 'https://player.vimeo.com/video/1127072292', 
+    altText: 'Video Editing Project 2',
+    description: 'A Birthday video edited using after effects.',
+    href: '#',
+    posterSrc: '/thumbnails/edit-project-2-thumb.heic'
+  },
 ];
 
 export default function ProjectsPage() {
