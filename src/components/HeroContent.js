@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import localFont from 'next/font/local';
 import TypingEffect from './TypingEffect';
-import { FaInstagram, FaYoutube, FaSnapchat } from 'react-icons/fa';
+import { FaInstagram, FaYoutube, FaSnapchat, FaLinkedin, FaGithub } from 'react-icons/fa';
 import Link from 'next/link';
 
 const samarkan = localFont({
@@ -46,11 +46,14 @@ const HeroContent = () => {
         <Link href="https://www.instagram.com/febiverse" target="_blank" className="hover:text-pink-600 transition-colors duration-200">
           <FaInstagram />
         </Link>
+        <Link href="https://www.linkedin.com/in/febin-sebastian-3a589a337/" target="_blank" className="hover:text-blue-400 transition-colors duration-200">
+          <FaLinkedin />
+        </Link>
         <Link href="https://youtube.com/@febinnnnn_n?si=3XFnif5CK_UGGSWd" target="_blank" className="hover:text-red-600 transition-colors duration-200">
           <FaYoutube />
         </Link>
-        <Link href="https://www.snapchat.com/add/kissmyf6bx" target="_blank" className="hover:text-yellow-400 transition-colors duration-200">
-          <FaSnapchat />
+        <Link href="https://github.com/Febinseb" target="_blank" className="hover:text-gray-600 transition-colors duration-200">
+          <FaGithub />
         </Link>
       </div>
     </>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import HeroContent from '@/components/HeroContent';
 import Loader from '@/components/Loader';
+import SEOJsonLd from '@/components/SEOJsonLd';
 
 export default function HomePage() {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -17,6 +18,7 @@ export default function HomePage() {
 
   return (
     <>
+    <SEOJsonLd />
       {!videoLoaded && (
         <div className="fixed top-0 left-0 w-full h-screen flex items-center justify-center bg-black z-50">
           <Loader />
@@ -25,11 +27,10 @@ export default function HomePage() {
 
       <main
         className={`relative h-screen w-full overflow-hidden transition-opacity duration-500 ${
-          videoLoaded ? 'opacity-100' : 'opacity-0'
+          videoLoaded ? 'opacity-100' : 'opacity-50'
         }`}
       >
         <div className="absolute inset-0 z-[-1]">
-          {/* --- LOCAL VIDEO REPLACEMENT --- */}
           <video
             className="absolute inset-0 w-full h-full object-cover pointer-events-none"
             autoPlay
@@ -39,18 +40,17 @@ export default function HomePage() {
             preload="auto"
             onCanPlayThrough={() => setVideoLoaded(true)}
             onError={(e) => {
-              console.error('video: error', e);
-              setVideoLoaded(true); // remove loader if video fails
+              console.error('video error', e);
+              setVideoLoaded(true);
             }}
           >
-            {/* Optional WebM fallback first */}
+            <source src="https://github.com/Febinseb/febiverse3/releases/download/v1.0/hero-video.mp4" type="video/mp4" />
             <source src="/videos/hero-video.webm" type="video/webm" />
-            <source src="/videos/hero-video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
 
-        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-[1]"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-70 z-[1]" />
 
         <HeroContent />
       </main>

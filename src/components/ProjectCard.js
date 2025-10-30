@@ -8,7 +8,6 @@ const ProjectCard = ({ type, src, altText, description, href, posterSrc }) => {
   const isVideo = type === 'video';
   const isImage = type === 'image';
 
-  // Correct the source URL for Vimeo to be an embed URL
   const vimeoEmbedSrc = isVideo ? `https://player.vimeo.com/video/${src.split('/').pop()}` : '';
 
   return (

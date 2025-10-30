@@ -1,10 +1,11 @@
 import ProjectCard from '@/components/ProjectCard';
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 
 const projects = [
   {
     id: 1,
     type: 'video',
-    src: 'https://player.vimeo.com/video/1117414686', // This is the correct embed URL
+    src: 'https://player.vimeo.com/video/1117414686', 
     altText: 'Video Editing Project 1',
     description: 'An example of a recent video editing project with vfx.',
     href: '#',
@@ -18,11 +19,34 @@ const projects = [
     description: 'A church website built with HTML and CSS.',
     href: 'https://velankanniparish-mysore.netlify.app'
   },
+  {
+    id: 3,
+    type: 'image',
+    src: '/images/game-project-1.png',
+    altText: 'Game Development Project 1',
+    description: 'A simple game built using HTML, CSS and Javascript.',
+    href: 'https://catch-the-id.netlify.app'
+  },
+  {
+    id: 4,
+    type: 'video',
+    src: 'https://player.vimeo.com/video/1127072292', 
+    altText: 'Video Editing Project 2',
+    description: 'A Birthday video edited using after effects.',
+    href: '#',
+    posterSrc: '/thumbnails/edit-project-2-thumb.heic'
+  },
 ];
 
 export default function ProjectsPage() {
   return (
     <main className="min-h-screen bg-black text-white p-8 pt-20">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', item: 'https://febiverse.vercel.app/' },
+          { name: 'About', item: 'https://febiverse.vercel.app/about' },
+        ]}
+      />
       <div className="max-w-7xl mx-auto py-12">
         <h1 className="text-6xl font-extrabold mb-12 text-center">
           <span className="text-white">My</span>{' '}

@@ -1,8 +1,15 @@
 import Card from '@/components/Card';
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 
 export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-black text-white p-8 pt-20">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', item: 'https://febiverse.vercel.app/' },
+          { name: 'About', item: 'https://febiverse.vercel.app/about' },
+        ]}
+      />
       <div className="max-w-6xl mx-auto py-12">
         <h1 className="text-6xl font-extrabold mb-12 text-center">
   <span className="text-white">Services</span>{' '}

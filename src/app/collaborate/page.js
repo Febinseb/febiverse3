@@ -3,6 +3,7 @@
 import { useForm } from '@formspree/react';
 import Link from 'next/link';
 import { TiTick } from 'react-icons/ti';
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 
 const CollaboratePage = () => {
   const [state, handleSubmit] = useForm("xwpnbwbe"); 
@@ -10,6 +11,12 @@ const CollaboratePage = () => {
   if (state.succeeded) {
     return (
       <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-8 text-center">
+        <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', item: 'https://febiverse.vercel.app/' },
+          { name: 'About', item: 'https://febiverse.vercel.app/about' },
+        ]}
+      />
         <TiTick className="text-green-400 w-24 h-24 mb-6 animate-bounce" />
         <p className="text-3xl font-bold mb-4">Message Sent!</p>
         <p className="text-lg text-gray-400 mb-8">Thanks for reaching out! We&apos;ll be in touch soon.</p>
