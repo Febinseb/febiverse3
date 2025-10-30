@@ -1,6 +1,8 @@
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SEOJsonLd from './SEOJsonLd';
+
 
 // ✅ Metadata used by Next.js (SEO + sharing)
 export const metadata = {
@@ -43,6 +45,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="bg-black text-white antialiased">
+        <SEOJsonLd />
         <Header />
         {children}
         <Footer />
