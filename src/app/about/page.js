@@ -1,9 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-black text-white p-8 pt-20">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', item: 'https://febiverse.vercel.app/' },
+          { name: 'About', item: 'https://febiverse.vercel.app/about' },
+        ]}
+      />
       <div className="max-w-4xl mx-auto flex flex-col items-start space-y-8">
         <h1 className="text-6xl font-extrabold">
           <span className="text-white">About</span>{' '}
