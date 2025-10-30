@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import HeroContent from '@/components/HeroContent';
 import Loader from '@/components/Loader';
+import SEOJsonLd from '@/components/SEOJsonLd';
 
 export default function HomePage() {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -17,6 +18,7 @@ export default function HomePage() {
 
   return (
     <>
+    <SEOJsonLd />
       {!videoLoaded && (
         <div className="fixed top-0 left-0 w-full h-screen flex items-center justify-center bg-black z-50">
           <Loader />
