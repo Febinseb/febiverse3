@@ -5,11 +5,12 @@ import SEOJsonLd from './SEOJsonLd';
 
 
 // ✅ Metadata used by Next.js (SEO + sharing)
+// ✅ Metadata used by Next.js (SEO + sharing)
 export const metadata = {
   metadataBase: new URL('https://febiverse.vercel.app'),
-  title: 'Febiverse - Febin Sebastian',
+  title: 'Febiverse — Febin Sebastian',
   description:
-    'Meet Febin Sebastian — a teenager redefining creativity. He is a professional video editor, website developer, and musician. Febin is the creator of Febiverse, a universe of innovation, visuals, and technology.',
+    'Febin Sebastian is a teenager redefining creativity. He is a professional video editor, website developer, and musician. Febin is the creator of Febiverse, a universe of innovation, visuals, and technology.',
   icons: { icon: '/favicon.ico' },
   openGraph: {
     type: 'website',
@@ -31,12 +32,17 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Febiverse — Febin Sebastian',
     description:
-      'Teenage creator, video editor, developer, and musician — discover Febin Sebastian’s Febiverse.',
+      'Teenage creator, video editor, developer, and musician, discover Febin Sebastian’s Febiverse.',
     images: ['/images/febin-sebastian.jpg'],
     creator: '@febiverse',
   },
   alternates: {
     canonical: 'https://febiverse.vercel.app',
+  },
+  // ✅ Put your Search Console code here (NO <meta> tag)
+  verification: {
+    google: 'vSVkTE7zazlAYnMct99F17dlaeyo1WFdJKY4egIT41Y',
+    // yahoo: '', yandex: '', me: ''  // (optional others)
   },
 };
 
