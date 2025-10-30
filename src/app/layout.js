@@ -9,7 +9,7 @@ export const metadata = {
   metadataBase: new URL('https://febiverse.vercel.app'),
   title: 'Febiverse — Febin Sebastian',
   description:
-    'Febin Sebastian is a teenager redefining creativity. He is a professional video editor, website developer, and musician. Febin is also the creator of Febiverse, a universe of innovation, visuals, and technology.',
+    'Febin Sebastian is a teenager redefining creativity. He is a professional video editor, website developer, and musician. Febin is also the creator of Febiverse, a universe of innovation, creativity, visuals, and technology.',
   icons: { icon: '/favicon.ico' },
   openGraph: {
     type: 'website',
