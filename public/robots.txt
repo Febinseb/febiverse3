@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://febiverse.vercel.app/sitemap-1.xml
+Sitemap: https://febiverse.vercel.app/sitemap.xml
