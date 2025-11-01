@@ -1,24 +1,39 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import HeroContent from '@/components/HeroContent';
 import Loader from '@/components/Loader';
 import SEOJsonLd from '@/components/SEOJsonLd';
 
 export default function HomePage() {
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setVideoLoaded(true);
     }, 5000);
-
     return () => clearTimeout(timer);
+  }, []);
+
+  // Reaffirm flags at runtime for Safari/WebKit quirks
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    try {
+      v.muted = true;
+      v.playsInline = true;
+      v.removeAttribute('controls'); // belt & suspenders
+      // Try to play; ignore if blocked (e.g., Low Power Mode)
+      const p = v.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+    } catch {}
   }, []);
 
   return (
     <>
-    <SEOJsonLd />
+      <SEOJsonLd />
+
       {!videoLoaded && (
         <div className="fixed top-0 left-0 w-full h-screen flex items-center justify-center bg-black z-50">
           <Loader />
@@ -32,24 +47,44 @@ export default function HomePage() {
       >
         <div className="absolute inset-0 z-[-1]">
           <video
-            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+            ref={videoRef}
+            className="bg-video absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+            // Autoplay essentials
             autoPlay
             muted
             loop
             playsInline
+            // Legacy WebKit hint (must be a literal attribute)
+            // @ts-ignore
+            webkit-playsinline="true"
+            // Keep browser UI off (Safari PiP/AirPlay/etc.)
+            controls={false}
+            controlsList="nodownload noplaybackrate noremoteplayback"
+            disablePictureInPicture
+            // Smooth load & graceful fallback
             preload="auto"
+            poster="/og/febiverse-og.jpg"         // <-- provide this image
+            aria-hidden="true"
+            tabIndex={-1}
             onCanPlayThrough={() => setVideoLoaded(true)}
             onError={(e) => {
               console.error('video error', e);
               setVideoLoaded(true);
             }}
           >
-            <source src="https://github.com/Febinseb/febiverse3/releases/download/v1.0/hero-video.mp4" type="video/mp4" />
+            {/* Prefer MP4 (H.264) first for Safari */}
+            {/* Strongly recommended: host locally instead of GitHub Releases */}
+            {/* <source src="/videos/hero-video.mp4" type="video/mp4" /> */}
+            <source
+              src="https://github.com/Febinseb/febiverse3/releases/download/v1.0/hero-video.mp4"
+              type="video/mp4"
+            />
             <source src="/videos/hero-video.webm" type="video/webm" />
             Your browser does not support the video tag.
           </video>
         </div>
 
+        {/* Contrast overlay above video */}
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-70 z-[1]" />
 
         <HeroContent />
