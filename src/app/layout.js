@@ -8,38 +8,6 @@ const SITE = 'https://febiverse.tech';
 const SITE_NAME = 'Febiverse';
 const AUTHOR = 'Febin Sebastian';
 
-// app/layout.js (only the RootLayout changed)
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body className="bg-black text-white antialiased">
-        {/* JSON-LD Schema */}
-        <SEOJsonLd />
-
-        {/* Site chrome + page content */}
-        <Header />
-        {children}
-        <Footer />
-
-        {/* 🔥 GLOBAL GLOWS — force on top of all page layers */}
-        <div
-          aria-hidden="true"
-          className="
-            pointer-events-none fixed inset-0
-            z-[60]  /* higher than any page overlay (your home uses z-[1]) */
-            mix-blend-screen
-          "
-        >
-          {/* left glow */}
-          <div className="absolute -top-32 -left-32 h-80 w-80 rounded-full bg-cyan-500/25 blur-3xl" />
-          {/* right glow */}
-          <div className="absolute top-40 -right-24 h-96 w-96 rounded-full bg-blue-500/25 blur-3xl" />
-        </div>
-      </body>
-    </html>
-  );
-}
-
 export const metadata = {
   metadataBase: new URL(SITE),
   title: { default: `${SITE_NAME} — ${AUTHOR}`, template: `%s | ${SITE_NAME}` },
@@ -72,3 +40,34 @@ export const metadata = {
   },
 };
 
+// app/layout.js (only the RootLayout changed)
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className="bg-black text-white antialiased">
+        {/* JSON-LD Schema */}
+        <SEOJsonLd />
+
+        {/* Site chrome + page content */}
+        <Header />
+        {children}
+        <Footer />
+
+        {/* 🔥 GLOBAL GLOWS — force on top of all page layers */}
+        <div
+          aria-hidden="true"
+          className="
+            pointer-events-none fixed inset-0
+            z-[60]  /* higher than any page overlay (your home uses z-[1]) */
+            mix-blend-screen
+          "
+        >
+          {/* left glow */}
+          <div className="absolute -top-32 -left-32 h-80 w-80 rounded-full bg-cyan-500/25 blur-3xl" />
+          {/* right glow */}
+          <div className="absolute top-40 -right-24 h-96 w-96 rounded-full bg-blue-500/25 blur-3xl" />
+        </div>
+      </body>
+    </html>
+  );
+}
