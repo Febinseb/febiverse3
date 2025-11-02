@@ -195,6 +195,21 @@ export default function AboutPage() {
           Let&apos;s Talk!
         </Link>
       </div>
+      <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ProfilePage',
+      url: 'https://febiverse.tech/about',
+      name: 'About — Febin Sebastian',
+      mainEntity: {
+        '@type': 'Person',
+        '@id': 'https://febiverse.tech/#person',
+      },
+    }),
+  }}
+/>
     </main>
   );
 }
