@@ -1,3 +1,4 @@
+// app/page.js
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -30,6 +31,15 @@ export default function HomePage() {
     } catch {}
   }, []);
 
+  // One-time tap fallback for iOS Low Power Mode / data saver
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const tryPlay = () => v.play().catch(() => {});
+    window.addEventListener('touchstart', tryPlay, { once: true, passive: true });
+    return () => window.removeEventListener('touchstart', tryPlay);
+  }, []);
+
   return (
     <>
       <SEOJsonLd />
@@ -57,13 +67,14 @@ export default function HomePage() {
             // Legacy WebKit hint (must be a literal attribute)
             // @ts-ignore
             webkit-playsinline="true"
+            x-webkit-airplay="deny"
             // Keep browser UI off (Safari PiP/AirPlay/etc.)
             controls={false}
-            controlsList="nodownload noplaybackrate noremoteplayback"
+            controlsList="nodownload noplaybackrate noremoteplayback nofullscreen"
             disablePictureInPicture
             // Smooth load & graceful fallback
             preload="auto"
-            poster="/og/febiverse-og.jpg"         // <-- provide this image
+            poster="/og/febiverse-og.jpg" // ensure this exists
             aria-hidden="true"
             tabIndex={-1}
             onCanPlayThrough={() => setVideoLoaded(true)}
@@ -72,8 +83,7 @@ export default function HomePage() {
               setVideoLoaded(true);
             }}
           >
-            {/* Prefer MP4 (H.264) first for Safari */}
-            {/* Strongly recommended: host locally instead of GitHub Releases */}
+            {/* Prefer local MP4 in /public/videos/ for best Safari behavior */}
             {/* <source src="/videos/hero-video.mp4" type="video/mp4" /> */}
             <source
               src="https://github.com/Febinseb/febiverse3/releases/download/v1.0/hero-video.mp4"
