@@ -29,22 +29,6 @@ export default function AboutPage() {
     <main className="relative min-h-screen bg-black text-white p-8 pt-20">
       {/* soft decorative glow */}
 
-      {/* JSON-LD: tell Google this page profiles the Person entity on the home URL */}
-      <script
-        type="application/ld+json"
-        // ProfilePage ties this page to your Person entity defined site-wide
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'ProfilePage',
-            url: `${SITE}/about`,
-            name: 'About — Febin Sebastian',
-            about: { '@id': PERSON_ID },
-            primaryTopic: { '@id': PERSON_ID },
-          }),
-        }}
-      />
-
       <BreadcrumbJsonLd
         items={[
           { name: 'Home', item: `${SITE}/` },
@@ -195,19 +179,28 @@ export default function AboutPage() {
           Let&apos;s Talk!
         </Link>
       </div>
-      <script
+{/* JSON-LD: single, valid ProfilePage */}
+<script
   type="application/ld+json"
   dangerouslySetInnerHTML={{
     __html: JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'ProfilePage',
+      '@id': 'https://febiverse.tech/about#profile',
       url: 'https://febiverse.tech/about',
       name: 'About — Febin Sebastian',
+      inLanguage: 'en',
+      // tie to the Person you declare site-wide in SEOJsonLd.jsx
+      about: { '@id': 'https://febiverse.tech#person' },
+      primaryTopic: { '@id': 'https://febiverse.tech#person' },
+      // include a minimal inline Person so the tester has a name to display
       mainEntity: {
         '@type': 'Person',
-        '@id': 'https://febiverse.tech/#person',
-      },
-    }),
+        '@id': 'https://febiverse.tech#person',
+        name: 'Febin Sebastian',
+        url: 'https://febiverse.tech'
+      }
+    })
   }}
 />
     </main>
