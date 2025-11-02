@@ -20,8 +20,8 @@ const OrderPageContent = () => {
       <main className='min-h-screen bg-black text-white flex flex-col items-center justify-center p-8 text-center'>
         <BreadcrumbJsonLd
         items={[
-          { name: 'Home', item: 'https://febiverse.vercel.app/' },
-          { name: 'About', item: 'https://febiverse.vercel.app/about' },
+          { name: 'Home', item: 'https://febiverse.tech/' },
+          { name: 'About', item: 'https://febiverse.tech/about' },
         ]}
       />
         <TiTick className='text-green-400 w-24 h-24 mb-6 animate-bounce' />

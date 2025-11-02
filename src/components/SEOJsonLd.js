@@ -18,13 +18,13 @@ export default function SEOJsonLd() {
   'Febin the Creator',
 ],
 
-      image: 'https://febiverse.vercel.app/images/febin-sebastian.jpg',
-      url: 'https://febiverse.vercel.app/',
+      image: 'https://febiverse.tech/images/febin-sebastian.jpg',
+      url: 'https://febiverse.tech/',
       jobTitle: ['Video Editor', 'Frontend Developer', 'Musician'],
       worksFor: {
         '@type': 'Organization',
         name: 'Febiverse',
-        url: 'https://febiverse.vercel.app/',
+        url: 'https://febiverse.tech/',
       },
       sameAs: [
         'https://www.instagram.com/febiverse',
@@ -37,8 +37,8 @@ export default function SEOJsonLd() {
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: 'Febiverse',
-      url: 'https://febiverse.vercel.app/',
-      logo: 'https://febiverse.vercel.app/favicon.ico',
+      url: 'https://febiverse.tech/',
+      logo: 'https://febiverse.tech/favicon.ico',
       founder: { '@type': 'Person', name: 'Febin Sebastian' },
     },
   ];

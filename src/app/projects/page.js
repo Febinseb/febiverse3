@@ -43,8 +43,8 @@ export default function ProjectsPage() {
     <main className="min-h-screen bg-black text-white p-8 pt-20">
       <BreadcrumbJsonLd
         items={[
-          { name: 'Home', item: 'https://febiverse.vercel.app/' },
-          { name: 'About', item: 'https://febiverse.vercel.app/about' },
+          { name: 'Home', item: 'https://febiverse.tech/' },
+          { name: 'About', item: 'https://febiverse.tech/about' },
         ]}
       />
       <div className="max-w-7xl mx-auto py-12">
