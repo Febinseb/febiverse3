@@ -58,17 +58,114 @@ export default function AboutPage() {
           <span className="text-green-400">Me</span>
         </h1>
 
-        {/* Portrait */}
-        <div className="relative w-full max-w-sm aspect-square rounded-2xl overflow-hidden ring-1 ring-white/10">
-          <Image
-            src="/images/febin-sebastian.jpg"
-            alt="Febin Sebastian portrait"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            priority
-          />
-        </div>
+   {/* Photo Album (overlapping circles) */}
+<div className="relative w-full max-w-xl mx-auto h-72 sm:h-80 md:h-96">
+  {/* big circle - left */}
+  <div className="group absolute left-0 top-0 w-40 h-40 sm:w-48 sm:h-48 md:w-60 md:h-60
+                  rounded-full overflow-hidden ring-2 ring-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.5)]
+                  transition-transform duration-300 hover:scale-[1.03]">
+    {/* decorative square outline behind */}
+    <span className="pointer-events-none absolute -inset-3 rounded-xl border-2 border-violet-400/60"></span>
+    <Image
+      src="/images/album-1.jpg"   // e.g. keep your /images/febin-sebastian.jpg here
+      alt="Febin Sebastian — portrait"
+      fill
+      className="object-cover"
+      sizes="(max-width: 768px) 12rem, (max-width: 1024px) 15rem, 18rem"
+      priority
+    />
+  </div>
+
+  {/* small circle - upper middle */}
+  <div className="absolute left-[57%] top-6 sm:top-8 -translate-x-1/2
+                  w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28
+                  rounded-full overflow-hidden ring-2 ring-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.5)]
+                  transition-transform duration-300 hover:scale-[1.05]">
+    <Image
+      src="/images/album-2.png"
+      alt="Febin — event photo"
+      fill
+      className="object-cover"
+      sizes="(max-width: 768px) 6rem, (max-width: 1024px) 7rem, 8rem"
+    />
+  </div>
+
+  {/* medium circle - bottom center/left */}
+  <div className="absolute left-12 sm:left-40 bottom-7
+                  w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36
+                  rounded-full overflow-hidden ring-2 ring-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.5)]
+                  transition-transform duration-300 hover:scale-[1.05]">
+    <Image
+      src="/images/album-3.jpg"
+      alt="Febin — studio / BTS"
+      fill
+      className="object-cover"
+      sizes="(max-width: 768px) 8rem, (max-width: 1024px) 9rem, 10rem"
+    />
+  </div>
+
+  {/* large circle - bottom right */}
+  <div className="absolute right-2 bottom-7
+                  w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64
+                  rounded-full overflow-hidden ring-2 ring-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.5)]
+                  transition-transform duration-300 hover:scale-[1.03]">
+    <Image
+      src="/images/album-4.jpg"
+      alt="Febin — outdoor portrait"
+      fill
+      className="object-cover"
+      sizes="(max-width: 768px) 11rem, (max-width: 1024px) 14rem, 16rem"
+    />
+  </div>
+</div>
+{/* JSON-LD: Image gallery for Google Images */}
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ImageGallery',          // alias of CollectionPage of images
+      name: 'Febin Sebastian Photo Album',
+      url: 'https://febiverse.tech/about',
+      about: { '@id': 'https://febiverse.tech#person' },
+      image: [
+        {
+          '@type': 'ImageObject',
+          contentUrl: 'https://febiverse.tech/images/album-1.jpg',
+          url: 'https://febiverse.tech/images/album-1.jpg',
+          caption: 'Febin Sebastian — portrait',
+          author: { '@type': 'Person', name: 'Febin Sebastian' },
+          creditText: 'Febiverse',
+        },
+        {
+          '@type': 'ImageObject',
+          contentUrl: 'https://febiverse.tech/images/album-2.jpg',
+          url: 'https://febiverse.tech/images/album-2.jpg',
+          caption: 'Event photo',
+          author: { '@type': 'Person', name: 'Febin Sebastian' },
+          creditText: 'Febiverse',
+        },
+        {
+          '@type': 'ImageObject',
+          contentUrl: 'https://febiverse.tech/images/album-3.jpg',
+          url: 'https://febiverse.tech/images/album-3.jpg',
+          caption: 'Studio / BTS',
+          author: { '@type': 'Person', name: 'Febin Sebastian' },
+          creditText: 'Febiverse',
+        },
+        {
+          '@type': 'ImageObject',
+          contentUrl: 'https://febiverse.tech/images/album-4.jpg',
+          url: 'https://febiverse.tech/images/album-4.jpg',
+          caption: 'Outdoor portrait',
+          author: { '@type': 'Person', name: 'Febin Sebastian' },
+          creditText: 'Febiverse',
+        },
+      ],
+    }),
+  }}
+/>
+
 
         {/* Intro */}
         <p className="text-lg font-light leading-relaxed">
@@ -97,36 +194,6 @@ export default function AboutPage() {
         >
           Let&apos;s Talk!
         </Link>
-
-        {/* Circular Gallery */}
-        <section className="w-full pt-8">
-          <h2 className="text-2xl font-semibold mb-4">Snapshots</h2>
-
-          <ul className="grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
-            {gallery.map((img, i) => (
-              <li key={i} className="flex items-center justify-center">
-                <div
-                  className="relative aspect-square w-36 sm:w-40 md:w-44 rounded-full overflow-hidden
-                             ring-1 ring-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.5)]
-                             transition-transform duration-300 ease-out hover:scale-105"
-                  title={img.alt}
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 9rem, (max-width: 768px) 10rem, 11rem"
-                  />
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          <p className="sr-only">
-            Gallery of circular photos showing Febin Sebastian at work — editing, coding, and music.
-          </p>
-        </section>
       </div>
     </main>
   );
