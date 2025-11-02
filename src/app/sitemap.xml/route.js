@@ -1,26 +1,16 @@
-export async function GET() {
-  const base = 'https://febiverse.vercel.app';
-  const pages = ['', 'about', 'projects', 'services', 'collaborate'];
+// app/sitemap.js
+const SITE = 'https://febiverse.tech';
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages
-  .map(
-    (p) => `  <url>
-    <loc>${base}/${p}</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
-    <changefreq>${p === '' ? 'weekly' : 'monthly'}</changefreq>
-    <priority>${p === '' ? '1.0' : '0.8'}</priority>
-  </url>`
-  )
-  .join('\n')}
-</urlset>`;
+export default function sitemap() {
+  const now = new Date().toISOString();
 
-  return new Response(xml, {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/xml; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600',
-    },
-  });
+  return [
+    { url: `${SITE}/`,           lastModified: now, changeFrequency: 'weekly',  priority: 1.0 },
+    { url: `${SITE}/about`,      lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${SITE}/projects`,   lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE}/services`,   lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    // NOTE: your folder is /colaborate (one “l”). Keep that here unless you rename it.
+    { url: `${SITE}/collaborate`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE}/order`,      lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+  ];
 }
